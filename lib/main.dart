@@ -319,11 +319,13 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:
+      AppBar(
 
         title: Text('Virtual Teacher',style: TextStyle(fontWeight: FontWeight.bold),),
         actions: [
           IconButton(onPressed: () {
+
             showDialog(context: context, builder: (context){
               return Dialog(
                 child:  Container(
@@ -339,6 +341,12 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
         ],
         centerTitle: true,
       ),
+      // PreferredSize(
+      //   preferredSize: Size(300,70),
+      //   child: Container(
+      //     child: Text("Hello !"),
+      //   ),
+      // ) ,
 
       body: loading==0 ? Center(child: CircularProgressIndicator()) :
       Container(
