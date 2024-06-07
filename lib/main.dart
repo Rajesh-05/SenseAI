@@ -30,8 +30,8 @@ PreferredSize NavBar(BuildContext context) {
       child: AppBar(
         // title: Text('Virtual Teacher', style: TextStyle(fontWeight: FontWeight.bold)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        backgroundColor: Colors.black12,
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         actions: [
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +61,7 @@ PreferredSize NavBar(BuildContext context) {
                         return HomePage();
                       }),);
                   },
-                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                  style: TextButton.styleFrom(primary: Colors.white, splashFactory: NoSplash.splashFactory,enableFeedback: false,
                       shape: RoundedRectangleBorder(),
                       fixedSize: Size(105, 55)
                   ),
@@ -91,7 +91,7 @@ PreferredSize NavBar(BuildContext context) {
                         return FilePick();
                       }),);
                   },
-                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                  style: TextButton.styleFrom(primary: Colors.white, splashFactory: NoSplash.splashFactory,enableFeedback: false,
                       shape: RoundedRectangleBorder(),
                       fixedSize: Size(105, 55)
                   ),
@@ -113,7 +113,7 @@ PreferredSize NavBar(BuildContext context) {
                       },
                     );
                   },
-                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                  style: TextButton.styleFrom(primary: Colors.white, splashFactory: NoSplash.splashFactory,enableFeedback: false,
                       shape: RoundedRectangleBorder(),
                       fixedSize: Size(105, 55)
                   ),
@@ -128,7 +128,7 @@ PreferredSize NavBar(BuildContext context) {
                         return ChatScreen();
                       }),);
                   },
-                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                  style: TextButton.styleFrom(primary: Colors.white, splashFactory: NoSplash.splashFactory,enableFeedback: false,
                       shape: RoundedRectangleBorder(),
                       fixedSize: Size(105, 55)
                   ),
@@ -153,7 +153,7 @@ PreferredSize NavBar(BuildContext context) {
                 //     icon: Icon(Icons.question_answer_outlined)
                 // ),
                 Text('SenseAI',
-                  style: TextStyle(fontWeight: FontWeight.w900,fontSize: 21),
+                  style: TextStyle(fontWeight: FontWeight.w900,fontSize: 21,color: Colors.white),
                 ) ,
                 SizedBox(width: 60,)
               ]
