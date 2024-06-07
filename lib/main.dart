@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,7 +22,150 @@ void main() {
 }
 
 
+PreferredSize NavBar(BuildContext context) {
+  return PreferredSize(
+    preferredSize: Size.fromHeight(kToolbarHeight + 10), // here, increase the height as you want
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(350,25,350,0), // here, set the space you want
+      child: AppBar(
+        // title: Text('Virtual Teacher', style: TextStyle(fontWeight: FontWeight.bold)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        backgroundColor: Colors.black12,
+        foregroundColor: Colors.black,
+        actions: [
+          Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children : [
 
+                // MaterialButton(onPressed: (){}, child: Text("Hi"),
+                //   hoverColor: Colors.transparent,
+                //   splashColor: Colors.transparent,
+                //   animationDuration: Duration(),
+                //    ),
+                // ElevatedButton(onPressed: (){}, child: Text("Hi") ,
+                //     style:  ElevatedButton.styleFrom(
+                //     backgroundColor: Colors.transparent ,
+                //     fixedSize: Size(155, 45),
+                //     foregroundColor: Colors.white,
+                //     textStyle: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)
+                // )),
+                // ElevatedButton(onPressed: (){}, child: Text("Hi")),
+                // ElevatedButton(onPressed: (){}, child: Text("Hi")),
+                TextButton(
+                  child: Text('HOME',
+                    style: TextStyle(fontWeight: FontWeight.w900,fontSize: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                        return HomePage();
+                      }),);
+                  },
+                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                      shape: RoundedRectangleBorder(),
+                      fixedSize: Size(105, 55)
+                  ),
+                ),
+                // TextButton(
+                //   child: Text('LEARN',
+                //     style: TextStyle(fontWeight: FontWeight.w900,fontSize: 14),
+                //   ),
+                //   onPressed: () {
+                //     Navigator.of(context).push(
+                //       MaterialPageRoute(builder: (context) {
+                //         return HomePage();
+                //       }),);
+                //   },
+                //   style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                //       shape: RoundedRectangleBorder(),
+                //       fixedSize: Size(105, 55)
+                //   ),
+                // ),
+                TextButton(
+                  child: Text('CREATE',
+                    style: TextStyle(fontWeight: FontWeight.w900,fontSize: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                        return FilePick();
+                      }),);
+                  },
+                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                      shape: RoundedRectangleBorder(),
+                      fixedSize: Size(105, 55)
+                  ),
+                ), TextButton(
+                  child: Text('DOUBTS',
+                    style: TextStyle(fontWeight: FontWeight.w900,fontSize: 14),
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            height: 600,
+                            width: 1200,
+                            child: Home(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                      shape: RoundedRectangleBorder(),
+                      fixedSize: Size(105, 55)
+                  ),
+                ),
+                TextButton(
+                  child: Text('EVALUATE',
+                    style: TextStyle(fontWeight: FontWeight.w900,fontSize: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                        return ChatScreen();
+                      }),);
+                  },
+                  style: TextButton.styleFrom(primary: Colors.black, splashFactory: NoSplash.splashFactory,enableFeedback: false,
+                      shape: RoundedRectangleBorder(),
+                      fixedSize: Size(105, 55)
+                  ),
+                ),
+                SizedBox(width: 210,) ,
+
+                // IconButton(
+                //     onPressed: () {
+                //       showDialog(
+                //         context: context,
+                //         builder: (context) {
+                //           return Dialog(
+                //             child: Container(
+                //               height: 600,
+                //               width: 1200,
+                //               child: Home(),
+                //             ),
+                //           );
+                //         },
+                //       );
+                //     },
+                //     icon: Icon(Icons.question_answer_outlined)
+                // ),
+                Text('SenseAI',
+                  style: TextStyle(fontWeight: FontWeight.w900,fontSize: 21),
+                ) ,
+                SizedBox(width: 60,)
+              ]
+
+          )
+
+        ],
+        centerTitle: true,
+      ),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -319,32 +463,41 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-      AppBar(
 
-        title: Text('Virtual Teacher',style: TextStyle(fontWeight: FontWeight.bold),),
-        actions: [
-          IconButton(onPressed: () {
+      appBar: NavBar(context),
 
-            showDialog(context: context, builder: (context){
-              return Dialog(
-                child:  Container(
-                    height: 600,
-                    width: 1200,
-                    child: Home()),
-              );
-
-            },
-            );
-          }, icon: Icon(Icons.question_answer_outlined)),
-          SizedBox(width: 80,)
-        ],
-        centerTitle: true,
-      ),
+      // appBar:
+      // AppBar(
+      //
+      //   title: Text('Virtual Teacher',style: TextStyle(fontWeight: FontWeight.bold),),
+      //   shape: RoundedRectangleBorder(borderRadius:  BorderRadius.circular(55)),
+      //   actions: [
+      //     ElevatedButton(onPressed: (){}, child: Text("Hi")) ,
+      //     IconButton(onPressed: () {
+      //
+      //       showDialog(context: context, builder: (context){
+      //         return Dialog(
+      //           child:  Container(
+      //               height: 600,
+      //               width: 1200,
+      //               child: Home()),
+      //         );
+      //
+      //       },
+      //       );
+      //     }, icon: Icon(Icons.question_answer_outlined)),
+      //     SizedBox(width: 80,)
+      //   ],
+      //   centerTitle: true,
+      // ),
       // PreferredSize(
       //   preferredSize: Size(300,70),
       //   child: Container(
-      //     child: Text("Hello !"),
+      //     child: Row(
+      //       children: [
+      //
+      //       ],
+      //     ),
       //   ),
       // ) ,
 
@@ -586,5 +739,7 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
       ),
     );
   }
+
+
 }
 

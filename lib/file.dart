@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:sense_ai/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -74,7 +75,8 @@ class _FilePickState extends State<FilePick> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Upload Files !"),),
+      appBar:  NavBar(context),
+      // AppBar(title: Text("Upload Files !"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

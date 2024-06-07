@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:sense_ai/main.dart';
+
 fetchdata(String url) async {
   http.Response response = await http.get(Uri.parse(url));
   return response.body;
@@ -70,6 +72,14 @@ class _ChatScreenState extends State<ChatScreen> {
 
     });
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _controller.animateTo(
+        _controller.position.maxScrollExtent,
+        duration: Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+      );
+    });
+
   }
 
   void _handleSubmitted(String text, String user) {
@@ -95,6 +105,14 @@ class _ChatScreenState extends State<ChatScreen> {
 
         _userController.clear();
 
+      _userController.clear();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _controller.animateTo(
+          _controller.position.maxScrollExtent,
+          duration: Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+        );
+      });
 
     }
   }
@@ -107,17 +125,18 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Evalution Time !'),
-      actions: [
-
-        ],
-      ),
+      appBar: NavBar(context),
+      // AppBar(title: Text('Evalution Time !'),
+      // actions: [
+      //
+      //   ],
+      // ),
       body: Container(
         color: Colors.white54,
         width: double.infinity,
         child: Column(
           children: [
-            SizedBox(height: 30,) ,
+            SizedBox(height: 25,) ,
             Container(
               height: 50,
               width: 400,
@@ -232,43 +251,49 @@ class ChatMessage extends StatelessWidget {
           isUser1 ?  CircleAvatar(child: Text('Z'),backgroundColor: Colors.black,foregroundColor: Colors.white,) : Text("") ,
           SizedBox(width: 8.0),
           Flexible(
-            child: Card(
-              elevation: 1.5,
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  color: messageColor,
-
-                  // borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,  // Specify the border color
+                  width: 1.6,          // Specify the border thickness
                 ),
-                child: SizedBox(
-                  width: 150.5 + text.length,
-                  child: Column(
-                    crossAxisAlignment: messageAlign,
+
+                borderRadius: isUser1 ? BorderRadius.only(topLeft: Radius.zero,topRight: Radius.circular(25),bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25))
+                : BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(0),bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25)),  // If you need the border to be rounded
+              ),
+              padding: EdgeInsets.all(10.0),
+              // decoration: BoxDecoration(
+              //   color: messageColor,
+              //
+              //   // borderRadius: BorderRadius.circular(8.0),
+              // ),
+              child: SizedBox(
+                width: 150.5 + text.length,
+                child: Column(
+                  crossAxisAlignment: messageAlign,
 
 
-                    children: <Widget>[
-                      Container(
-                        width: double.infinity,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          user,
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),
-                        ),
+                  children: <Widget>[
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        user,
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),
                       ),
-                      SizedBox(height: 5.0,
-                        // width: 100.5 + text.length,
+                    ),
+                    SizedBox(height: 5.0,
+                      // width: 100.5 + text.length,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        text.toString(),
+                        style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.w400,fontFamily: "Poppins"),
                       ),
-                      Container(
-                        width: double.infinity,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          text.toString(),
-                          style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.w400,fontFamily: "Poppins"),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

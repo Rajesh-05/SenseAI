@@ -27,7 +27,8 @@ List<String> imageUrls = [
 ];
 
 List<String> imageUrls2 = [
-  'assets/abt.jpg'
+  'assets/abt4.png',
+  'assets/abt5.png'
 ];
 
 
@@ -35,8 +36,12 @@ List<String> imageUrls2 = [
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
+
     flessons ;
-    GetData();
+    if (flessons.length < 1){
+      GetData();
+
+    }
     super.initState();
   }
   @override
@@ -44,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   var response;
   var data;
   var data5;
-  var loading = 0 ;
+  var loading = 1 ;
 
   Future<void> GetData() async {
     response = await rootBundle.loadString('assets/Zoo-dataset2.json');
@@ -52,6 +57,7 @@ class _HomePageState extends State<HomePage> {
     data5 = data['Microbes in Human Welfare'];
     List topics = [];
     for (final i in data5.keys) {
+
       topics.add(i);
     }
     setState(() {
@@ -65,17 +71,18 @@ class _HomePageState extends State<HomePage> {
 
     return  Scaffold(
       drawer: Navigation(),
-      appBar: AppBar(
-        title: Text("HOME"),
-        actions: [
-          IconButton(onPressed: () {
-            setState(() {
-              flessons;
-            });
-          }, icon: Icon(Icons.refresh_outlined)),
-          SizedBox(width: 80,)
-        ],
-      ),
+      appBar: NavBar(context) ,
+      // AppBar(
+      //   title: Text("HOME"),
+      //   actions: [
+      //     IconButton(onPressed: () {
+      //       setState(() {
+      //         flessons;
+      //       });
+      //     }, icon: Icon(Icons.refresh_outlined)),
+      //     SizedBox(width: 80,)
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -92,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     //padding: const EdgeInsets.all(30),
                     //color: Color.fromRGBO(14, 0, 95, 1),
-                    height: 500,
+                    height: 350,
                     width: 1800,
                     child: PageView.builder(
                       //physics: ,

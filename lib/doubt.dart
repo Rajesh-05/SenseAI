@@ -79,10 +79,10 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
-                    IconButton(
+                    ElevatedButton(
 
                         style: ElevatedButton.styleFrom(
-                          fixedSize: Size(20, 40)
+                          fixedSize: Size(120, 40)
                         ),
 
                         onPressed: () {
@@ -91,10 +91,11 @@ class _HomeState extends State<Home> {
 
                       });
                     } ,
-                        icon: Center(child: Icon(mode==1 ? Icons.looks_one_outlined : Icons.looks_two_outlined ,size: 30,))) ,
+                        child: Center(child: Text(mode==1 ? "General" : "In-BOOK" ))) ,
 
                     //Icon(mode==0 ? Icons.looks_one_outlined : Icons.looks_two_rounded ,),
                 // Question
+                    SizedBox(width:15,height:5) ,
 
                 SizedBox(width: 500,
                   child: TextField(
@@ -166,7 +167,9 @@ class _HomeState extends State<Home> {
                   children: [
                     CircularProgressIndicator(),
                   ],
-                ) :
+                )
+                    :
+                  mode==1 ? null :
 
                 path == " " ? null :
 
