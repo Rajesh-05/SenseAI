@@ -39,7 +39,7 @@ openFile(String type) async {
     path1 = file.path ;
     path2 = path1.replaceAll(r'\', '/');
     print(path2) ;
-    data = await fetchdata('http://127.0.0.1:5000/$type?text=${path2}');
+    data = await fetchdata('http://127.0.0.1:5003/$type?text=${path2}');
     data = data.toString() ;
     var decoded = jsonDecode(data);
     var result = decoded['out'] ;

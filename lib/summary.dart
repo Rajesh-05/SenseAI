@@ -39,12 +39,12 @@ class _SummaryState extends State<Summary> {
   String paraImg = "" ;
   Future getData () async {
 
-    url = 'http://127.0.0.1:5000/sum?text=$para';
+    url = 'http://127.0.0.1:5003/sum?text=$para';
     //_Controller.clear();4
     setState(() {
       imgloading = 0 ;
       output='Loading';
-      url = 'http://127.0.0.1:5000/sum?text=$para';
+      url = 'http://127.0.0.1:5003/sum?text=$para';
     });
     data = await fetchdata(url);
     var decoded = jsonDecode(data);
@@ -82,7 +82,7 @@ class _SummaryState extends State<Summary> {
               //       SizedBox(width: 500,
               //         child: TextField(
               //           onChanged: (value) {
-              //             url = 'http://127.0.0.1:5000/api?text=' + value.toString();
+              //             url = 'http://127.0.0.1:5003/api?text=' + value.toString();
               //           },
               //           onSubmitted: (value) => () async {
               //             setState(() {

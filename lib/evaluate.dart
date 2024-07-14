@@ -86,18 +86,18 @@ class _ChatScreenState extends State<ChatScreen> {
     if (text.isNotEmpty) {
       setState(() {
         _messages.add(ChatMessage(text, user));
-        //url = 'http://127.0.0.1:5000/api?text=' + text.toString();
+        //url = 'http://127.0.0.1:5003/api?text=' + text.toString();
 
       });
       if (text.toLowerCase()=='start'){
-        ques('http://127.0.0.1:5000/ask');
+        ques('http://127.0.0.1:5003/ask');
 
       } else{
 
-        ques('http://127.0.0.1:5000/eval?text=' + text.toString());
+        ques('http://127.0.0.1:5003/eval?text=' + text.toString());
 
         Future.delayed(Duration(seconds: 15), () {
-          ques('http://127.0.0.1:5000/ask');
+          ques('http://127.0.0.1:5003/ask');
         });
 
 
@@ -153,7 +153,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 value: valueChoose,
                 onChanged: (newValue){
                   setState(() {
-                    url = 'http://127.0.0.1:5000/start?text=' + newValue.toString();
+                    url = 'http://127.0.0.1:5003/start?text=' + newValue.toString();
                     valueChoose=newValue;
                     var topic = fetchdata(url);
                     _messages.add(ChatMessage("Type START to start Evalution :) ", 'Zen'));

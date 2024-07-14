@@ -27,7 +27,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (text.isNotEmpty) {
       setState(() {
         _messages.add(ChatMessage(text, user));
-        url = 'http://127.0.0.1:5000/api?text=' + text.toString();
+        url = 'http://127.0.0.1:5003/api?text=' + text.toString();
 
       });
       if (user == "User 1") {

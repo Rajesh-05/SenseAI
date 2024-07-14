@@ -47,11 +47,11 @@ class _HomeState extends State<Home> {
 
   Future getData (String text,String mode) async {
 
-    url = 'http://127.0.0.1:5000/api?text=$mode' + text.toString();
+    url = 'http://127.0.0.1:5003/api?text=$mode' + text.toString();
     _Controller.clear();
     setState(() {
       output='Loading';
-      url = 'http://127.0.0.1:5000/api?text=$mode' + text.toString();
+      url = 'http://127.0.0.1:5003/api?text=$mode' + text.toString();
     });
     data = await fetchdata(url);
     var decoded = jsonDecode(data);
@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
                 SizedBox(width: 500,
                   child: TextField(
                     // onChanged: (value) {
-                    //   url = 'http://127.0.0.1:5000/api?text=' + value.toString();
+                    //   url = 'http://127.0.0.1:5003/api?text=' + value.toString();
                     // },
                     controller: _Controller,
                     onSubmitted: mode==1 ? (text) => getData(text,'c') : (text) => getData(text,'q'),

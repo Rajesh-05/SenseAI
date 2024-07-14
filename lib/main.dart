@@ -42,7 +42,7 @@ PreferredSize NavBar(BuildContext context) {
                 //   splashColor: Colors.transparent,
                 //   animationDuration: Duration(),
                 //    ),
-                // ElevatedButton(onPressed: (){}, child: Text("Hi") ,
+                // ElevatedButton(onPressed: (){}, child: Text("Hi"7) ,
                 //     style:  ElevatedButton.styleFrom(
                 //     backgroundColor: Colors.transparent ,
                 //     fixedSize: Size(155, 45),
@@ -304,11 +304,11 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
   dynamic output = '';
   Future getData2 (para) async {
 
-    url = 'http://127.0.0.1:5000/trans?text=$para';
+    url = 'http://127.0.0.1:5003/trans?text=$para';
     setState(() {
       imgloading=0;
       output='Loading';
-      url = 'http://127.0.0.1:5000/trans?text=$para';
+      url = 'http://127.0.0.1:5003/trans?text=$para';
       paraImg=[];
     });
 
@@ -330,7 +330,7 @@ class _ParagraphsAndImageViewerState extends State<ParagraphsAndImageViewer> {
   }
 
   getDatatrans(para) async {
-    data = await fetchdata('http://127.0.0.1:5000/trans?text=$para');
+    data = await fetchdata('http://127.0.0.1:5003/trans?text=$para');
     var decoded = jsonDecode(data);
     setState(() {
       output = decoded['trans'].toString();
